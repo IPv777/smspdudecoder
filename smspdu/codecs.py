@@ -93,7 +93,7 @@ class GSM:
                 except KeyError:
                     char_index = cls.CHAR_EXT
             if char_index == cls.CHAR_EXT:
-                raise ValueError(f"Char \"{char}\" can not be encoded with the GSM 7-bit codec")
+                raise ValueError("Char \"{char}\" can not be encoded with the GSM 7-bit codec")
             chars.append(char_index)
         res = '0' * (len(chars) % 8) + ''.join([f'{char:07b}' for char in chars][::-1])
         return cls.reversed_octets(BitStream(bin=res).hex.upper())
